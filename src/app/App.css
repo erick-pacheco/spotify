@@ -1,3 +1,7 @@
+* {
+  margin: 0;
+}
+
 .bg-dark {
   background-color: black !important;
 }

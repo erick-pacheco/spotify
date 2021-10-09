@@ -1,5 +1,5 @@
 import React from "react";
-import { loginUrl } from "../spotify";
+import { loginUrl } from "../configs/spotify";
 
 export default function Login({ theme }) {
   return (

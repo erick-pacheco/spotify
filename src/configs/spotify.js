@@ -30,4 +30,4 @@ const extractToken = () =>
       return initial;
     }, {});
 
-export { loginUrl, scopes, extractToken, spotify };
+export { loginUrl, extractToken, spotify };
