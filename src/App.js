@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
-import "./App.css";
+
 import Login from "./components/Login";
-import { extractToken } from "./spotify";
+import { extractToken, spotify } from "./spotify";
+import "./App.css";
 
 function App() {
   const [token, setToken] = useState(null);
@@ -13,6 +14,10 @@ function App() {
 
     if (_token) {
       setToken(_token);
+      spotify.setAccessToken(_token);
+      spotify.getMe().then((user) => {
+        console.log(user);
+      });
     }
   }, []);
 
