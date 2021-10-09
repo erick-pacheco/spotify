@@ -1,3 +1,3 @@
 const AUTH_SET_USER = "AUTH_SET_USER";
-
-export { AUTH_SET_USER };
+const AUTH_SET_TOKEN = "AUTH_SET_TOKEN";
+export { AUTH_SET_USER, AUTH_SET_TOKEN };

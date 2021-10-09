@@ -5,6 +5,7 @@ import Login from "../components/Login";
 import { extractToken, spotify } from "../configs/spotify";
 import { useStateValue } from "../data/StateProvider";
 import { AUTH_SET_USER } from "../data/action.types";
+import Player from "../components/Player";
 
 function App() {
   const [token, setToken] = useState(null);
@@ -25,17 +26,9 @@ function App() {
         });
       });
     }
-  }, [user, dispatch]);
+  }, []);
 
-  return (
-    <>
-      {token ? (
-        <p>Welcome to your player, {user?.display_name} </p>
-      ) : (
-        <Login theme="dark" />
-      )}
-    </>
-  );
+  return <>{token ? <Player /> : <Login theme="dark" />}</>;
 }
 
 export default App;

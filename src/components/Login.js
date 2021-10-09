@@ -1,7 +1,9 @@
 import React from "react";
 import { loginUrl } from "../configs/spotify";
+import { useStateValue } from "../data/StateProvider";
 
 export default function Login({ theme }) {
+  const [{spotify_img}] = useStateValue()
   return (
     <div
       className={`h-100 ${theme === "dark" ? "text-white" : "text-dark"} ${
@@ -15,7 +17,7 @@ export default function Login({ theme }) {
               <tr>
                 <td className="align-middle">
                   <img
-                    src="https://storage.googleapis.com/pr-newsroom-wp/1/2018/11/Spotify_Logo_RGB_White.png"
+                    src={spotify_img}
                     className="img-fluid mb-5"
                     alt="Spotify Logo"
                     style={{ maxWidth: "40vh" }}
