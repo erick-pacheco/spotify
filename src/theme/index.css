@@ -1,0 +1,189 @@
+.table-fixed {
+  width: 100%;
+  background-color: #f3f3f3;
+}
+.table-fixed tbody {
+  height: 100px;
+  overflow-y: auto;
+  width: 100%;
+}
+.table-fixed thead, .table-fixed tbody, .table-fixed tr, .table-fixed td, .table-fixed th {
+  display: block;
+}
+.table-fixed tbody td {
+  float: left;
+}
+.table-fixed thead tr th {
+  float: left;
+  background-color: #f39c12;
+  border-color: #e67e22;
+}
+
+
+* {
+  margin: 0;
+}
+.color-spotify {
+  color: #1db954 !important;
+}
+.item-spotify:hover {
+  color: #1db954 !important;
+  cursor: pointer !important;
+  transition: 300ms color ease-in;
+  transition: all 0.5s ease-out;
+  box-shadow: 0 1rem 3rem #1db954 !important;
+  padding: 10px 10px;
+}
+.scrollable {
+  background-attachment: scroll;
+}
+
+.img-thumbnail-or {
+  max-width: 180px !important;
+  contain: content;
+}
+.table {
+  border-color: transparent;
+  height: 120px;
+  overflow: auto;
+}
+
+.decorate-dot:hover {
+  text-decoration:underline;
+  text-decoration-style: dotted;
+  color: #1db954 !important;
+  cursor: pointer;
+  border: 1px solid #1db954 !important;
+}
+
+.shadow-lg {
+  box-shadow: 0 1rem 3rem #1db954 !important;
+  color: black !important;
+}
+.shadow-lg:hover {
+  color: white !important;
+}
+
+html {
+  overflow-y: hidden;
+}
+
+/* Overide the progress bar of the notifications */
+:root {
+  --toastify-color-progress-dark: #1db954 !important;
+}
+
+/*
+mui class for nav
+*/
+
+.login {
+  min-height: 100vh !important;
+  width: auto;
+  background-image: url(https://i.giphy.com/media/xTk9ZwzuWiyJ8n5Vzq/giphy.webp);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 100% !important;
+}
+
+.border-rd {
+  border-radius: 99px !important;
+}
+
+.bg-dark {
+  background-color: black !important;
+}
+.bg-spotify {
+  background-color: #1db954 !important;
+}
+.btn-spotify {
+  border-radius: 99px !important;
+  background-color: #1db954 !important;
+  font-weight: 800;
+  color: white;
+}
+
+/*
+Player Start
+*/
+
+.player_body {
+  display: flex;
+}
+
+/*
+Player End
+*/
+
+/*
+Sidebar Start
+*/
+
+.sidebar {
+  height: 100%;
+  background-color: #040404;
+  color: grey;
+  padding-left: 10px;
+  padding-top: 10px;
+  padding-right: 10px;
+  min-width: 230px;
+}
+
+.sidebarOption {
+  cursor: pointer;
+  transition: 200ms color ease-in;
+}
+.sidebarOption:hover {
+  color: white;
+  text-decoration: underline #1db954 !important;
+  box-shadow: 0 1rem 3rem #1db954 !important;
+}
+
+.sidebar_logo {
+  object-fit: contain;
+  height: 50px;
+}
+
+/*
+Body Start
+*/
+.body-flex {
+  flex: 0.8;
+}
+.body {
+  height: 100vh;
+  padding: 30px;
+  color: white;
+  background: linear-gradient(rgb(91, 87, 115), rgba(0, 0, 0, 1));
+}
+
+/*
+Footer
+*/
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  height: auto;
+  width: 100%;
+  color: white;
+  background-color: #282828 !important;
+}
+
+.hoverover {
+  color: gray !important;
+}
+.hoverspotify:hover {
+  color: #1db954 !important;
+}
+
+.hoverover:hover {
+  color: white !important;
+  cursor: pointer !important;
+  transition: 200ms color ease-in !important;
+}
+
+.small-img {
+  object-fit: contain;
+  max-width: 50px;
+}
