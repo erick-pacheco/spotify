@@ -8,7 +8,6 @@ import Typography from "@mui/material/Typography";
 import InputBase from "@mui/material/InputBase";
 import MenuItem from "@mui/material/MenuItem";
 import Menu from "@mui/material/Menu";
-import MenuIcon from "@mui/icons-material/Menu";
 import SearchIcon from "@mui/icons-material/Search";
 import AccountCircle from "@mui/icons-material/AccountCircle";
 import MoreIcon from "@mui/icons-material/MoreVert";
@@ -18,10 +17,12 @@ import SwipeableTemporaryDrawer from "./Drawer";
 import {
   AUTH_SET_TOKEN,
   AUTH_SET_USER,
-  SIDE_MENU_TOGGLE,
+  SET_SEARCH_RESULTS,
 } from "../data/action.types";
+import { deezer } from "../data/deezer";
 import { useStateValue } from "../data/StateProvider";
 import { toast } from "react-toastify";
+import { SearchResults } from "./SearchResults";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -64,9 +65,26 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 export default function PrimarySearchAppBar() {
-  const [{ user, sideMenuOpen }, dispatch] = useStateValue();
+  const [{ user, searchList }, dispatch] = useStateValue();
+  const [search, setSearch] = React.useState(null);
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
+
+  React.useEffect(() => {
+    console.log(searchList);
+  }, [searchList]);
+  const onChange = (e) => {
+    e.preventDefault();
+    setSearch(e.target.value);
+  };
+
+  const onSubmit = async () => {
+    const { data } = await deezer({ q: search });
+    dispatch({
+      type: SET_SEARCH_RESULTS,
+      payload: { data },
+    });
+  };
 
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
@@ -168,16 +186,16 @@ export default function PrimarySearchAppBar() {
             component="div"
             sx={{ display: { xs: "none", sm: "block" } }}
           >
-            Browse all
+            Browse all {searchList?.data?.length}
           </Typography>
           <Search>
-            <SearchIconWrapper>
-              <SearchIcon />
-            </SearchIconWrapper>
+            <SearchIconWrapper>{!search && <SearchIcon />}</SearchIconWrapper>
             <StyledInputBase
               placeholder="Artists, songs...."
               inputProps={{ "aria-label": "search" }}
+              onChange={onChange}
             />
+            {search && <SearchResults />}
           </Search>
           <Box sx={{ flexGrow: 1 }} />
           <Box sx={{ display: { xs: "none", md: "flex" } }}>

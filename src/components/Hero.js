@@ -1,13 +1,12 @@
 import React from "react";
-import XSpread, { XSpread48 } from "./XSpread";
-import YSpread from "./YSpread";
-import FiberManualRecordIcon from "@mui/icons-material/FiberManualRecord";
+import { XSpread48 } from "./XSpread";
 
 export const Hero = () => {
   return (
     <XSpread48
+      fade={"animate__animated animate__rollIn"}
       four={
-        <div className="my-2 text-center">
+        <div className="my-5 text-center">
           <img
             src="https://bit.ly/3mIAJL2"
             className="rounded mx-auto d-block img-thumbnail-or"
@@ -17,7 +16,7 @@ export const Hero = () => {
       }
       eight={
         <>
-          <p className="text-white mt-5">PLAYLIST</p>
+          <p className="text-white my-5">PLAYLIST</p>
           <h5 className="text-white">INDUSTRY BABY</h5>
           <p className="text-white">
             Lil Nas X, Jack Harlow&nbsp;&nbsp;&nbsp;

@@ -4,10 +4,26 @@
 .color-spotify {
   color: #1db954 !important;
 }
+.item-spotify:hover {
+  color: #1db954 !important;
+  cursor: pointer !important;
+  transition: 300ms color ease-in;
+  transition: all 0.5s ease-out;
+  box-shadow: 0 1rem 3rem #1db954 !important;
+  padding: 10px 10px;
+}
+.scrollable {
+  background-attachment: scroll;
+}
 
 .img-thumbnail-or {
   max-width: 180px !important;
   contain: content;
+}
+.table {
+  border-color: transparent;
+  height: 20px;
+  overflow: scroll;
 }
 .shadow-lg {
   box-shadow: 0 1rem 3rem #1db954 !important;
@@ -36,15 +52,13 @@ mui class for nav
   background-image: url(https://i.giphy.com/media/xTk9ZwzuWiyJ8n5Vzq/giphy.webp);
   background-position: center;
   background-repeat: no-repeat;
-  background-size: 100%;
+  background-size: 100% !important;
 }
 
 .border-rd {
   border-radius: 99px !important;
 }
-.css-1k0i2s9-MuiPaper-root-MuiAppBar-root {
-  background-color: red;
-}
+
 .bg-dark {
   background-color: black !important;
 }

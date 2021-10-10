@@ -2,6 +2,7 @@ const initialState = {
   sideMenuOpen: null,
   user: null,
   token: null,
+  searchList: [],
   playlist: [],
   playing: false,
   item: null,
