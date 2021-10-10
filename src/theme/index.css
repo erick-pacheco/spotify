@@ -1,3 +1,25 @@
+.table-fixed {
+  width: 100%;
+  background-color: #f3f3f3;
+}
+.table-fixed tbody {
+  height: 100px;
+  overflow-y: auto;
+  width: 100%;
+}
+.table-fixed thead, .table-fixed tbody, .table-fixed tr, .table-fixed td, .table-fixed th {
+  display: block;
+}
+.table-fixed tbody td {
+  float: left;
+}
+.table-fixed thead tr th {
+  float: left;
+  background-color: #f39c12;
+  border-color: #e67e22;
+}
+
+
 * {
   margin: 0;
 }
@@ -22,9 +44,18 @@
 }
 .table {
   border-color: transparent;
-  height: 20px;
-  overflow: scroll;
+  height: 120px;
+  overflow: auto;
 }
+
+.decorate-dot:hover {
+  text-decoration:underline;
+  text-decoration-style: dotted;
+  color: #1db954 !important;
+  cursor: pointer;
+  border: 1px solid #1db954 !important;
+}
+
 .shadow-lg {
   box-shadow: 0 1rem 3rem #1db954 !important;
   color: black !important;

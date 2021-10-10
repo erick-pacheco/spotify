@@ -3,6 +3,7 @@ const initialState = {
   user: null,
   token: null,
   searchList: [],
+  searchQuery: null,
   playlist: [],
   playing: false,
   item: null,

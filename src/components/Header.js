@@ -13,16 +13,20 @@ import AccountCircle from "@mui/icons-material/AccountCircle";
 import MoreIcon from "@mui/icons-material/MoreVert";
 import Chip from "@mui/material/Chip";
 
+import Stack from "@mui/material/Stack";
+import LinearProgress from "@mui/material/LinearProgress";
+
 import SwipeableTemporaryDrawer from "./Drawer";
 import {
   AUTH_SET_TOKEN,
   AUTH_SET_USER,
+  SET_SEARCH_QUERY,
   SET_SEARCH_RESULTS,
 } from "../data/action.types";
-import { deezer } from "../data/deezer";
 import { useStateValue } from "../data/StateProvider";
 import { toast } from "react-toastify";
-import { SearchResults } from "./SearchResults";
+import { deezer } from "../data/deezer";
+import { List } from "./List";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -65,27 +69,36 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 export default function PrimarySearchAppBar() {
-  const [{ user, searchList }, dispatch] = useStateValue();
+  const [{ user, searchList, searchQuery }, dispatch] = useStateValue();
   const [search, setSearch] = React.useState(null);
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
+  const [loading, setLoading] = React.useState(false);
 
   React.useEffect(() => {
     console.log(searchList);
-  }, [searchList]);
+  }, [searchList, searchQuery]);
+
   const onChange = (e) => {
     e.preventDefault();
     setSearch(e.target.value);
-  };
-
-  const onSubmit = async () => {
-    const { data } = await deezer({ q: search });
     dispatch({
-      type: SET_SEARCH_RESULTS,
-      payload: { data },
+      type: SET_SEARCH_QUERY,
+      payload: e.target.value,
     });
   };
 
+  const onsubmit = async (e) => {
+    setLoading(!loading);
+    e.preventDefault();
+    const { data } = await deezer({ q: search });
+    dispatch({
+      type: SET_SEARCH_RESULTS,
+      payload: data,
+    });
+    setSearch("");
+    setLoading(false);
+  };
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
 
@@ -175,53 +188,65 @@ export default function PrimarySearchAppBar() {
   );
 
   return (
-    <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static">
-        <Toolbar>
-          <SwipeableTemporaryDrawer />
+    <>
+      <Box sx={{ flexGrow: 1 }}>
+        {loading && (
+          <Stack sx={{ width: "100%", color: "grey.500" }} spacing={2}>
+            <LinearProgress color="success" />
+          </Stack>
+        )}
+        <AppBar position="static">
+          <Toolbar>
+            <SwipeableTemporaryDrawer />
 
-          <Typography
-            variant="h6"
-            noWrap
-            component="div"
-            sx={{ display: { xs: "none", sm: "block" } }}
-          >
-            Browse all {searchList?.data?.length}
-          </Typography>
-          <Search>
-            <SearchIconWrapper>{!search && <SearchIcon />}</SearchIconWrapper>
-            <StyledInputBase
-              placeholder="Artists, songs...."
-              inputProps={{ "aria-label": "search" }}
-              onChange={onChange}
-            />
-            {search && <SearchResults />}
-          </Search>
-          <Box sx={{ flexGrow: 1 }} />
-          <Box sx={{ display: { xs: "none", md: "flex" } }}>
-            <Chip
-              icon={<AccountCircle />}
-              label={user?.display_name}
-              onClick={handleProfileMenuOpen}
-              variant="outlined"
-            />
-          </Box>
-          <Box sx={{ display: { xs: "flex", md: "none" } }}>
-            <IconButton
-              size="large"
-              aria-label="show more"
-              aria-controls={mobileMenuId}
-              aria-haspopup="true"
-              onClick={handleMobileMenuOpen}
-              color="inherit"
+            <Typography
+              variant="h6"
+              noWrap
+              component="div"
+              sx={{ display: { xs: "none", sm: "block" } }}
             >
-              <MoreIcon />
-            </IconButton>
-          </Box>
-        </Toolbar>
-      </AppBar>
-      {renderMobileMenu}
-      {renderMenu}
-    </Box>
+              {`${searchList?.length || 0 + " results found..."}`}
+            </Typography>
+            <Search>
+              <SearchIconWrapper>{!search && <SearchIcon />}</SearchIconWrapper>
+              <StyledInputBase
+                placeholder="Artists, songs...."
+                inputProps={{ "aria-label": "search" }}
+                onChange={onChange}
+              />
+              {search && (
+                <button className="btn w-100 bg-spotify" onClick={onsubmit}>
+                  <SearchIcon /> Search
+                </button>
+              )}
+            </Search>
+            <Box sx={{ flexGrow: 1 }} />
+            <Box sx={{ display: { xs: "none", md: "flex" } }}>
+              <Chip
+                icon={<AccountCircle />}
+                label={user?.display_name}
+                onClick={handleProfileMenuOpen}
+                variant="outlined"
+              />
+            </Box>
+            <Box sx={{ display: { xs: "flex", md: "none" } }}>
+              <IconButton
+                size="large"
+                aria-label="show more"
+                aria-controls={mobileMenuId}
+                aria-haspopup="true"
+                onClick={handleMobileMenuOpen}
+                color="inherit"
+              >
+                <MoreIcon />
+              </IconButton>
+            </Box>
+          </Toolbar>
+        </AppBar>
+        {renderMobileMenu}
+        {renderMenu}
+      </Box>
+      <List list={searchList} />
+    </>
   );
 }
