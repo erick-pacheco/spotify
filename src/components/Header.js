@@ -13,8 +13,15 @@ import SearchIcon from "@mui/icons-material/Search";
 import AccountCircle from "@mui/icons-material/AccountCircle";
 import MoreIcon from "@mui/icons-material/MoreVert";
 import Chip from "@mui/material/Chip";
-import { AUTH_SET_TOKEN, AUTH_SET_USER } from "../data/action.types";
+
+import SwipeableTemporaryDrawer from "./Drawer";
+import {
+  AUTH_SET_TOKEN,
+  AUTH_SET_USER,
+  SIDE_MENU_TOGGLE,
+} from "../data/action.types";
 import { useStateValue } from "../data/StateProvider";
+import { toast } from "react-toastify";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -57,7 +64,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 export default function PrimarySearchAppBar() {
-  const [{ user }, dispatch] = useStateValue();
+  const [{ user, sideMenuOpen }, dispatch] = useStateValue();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
 
@@ -85,7 +92,12 @@ export default function PrimarySearchAppBar() {
       type: AUTH_SET_TOKEN,
       payload: null,
     });
+    dispatch({
+      type: AUTH_SET_USER,
+      payload: null,
+    });
 
+    toast.dark("You have been logged out");
   };
 
   const menuId = "primary-search-account-menu";
@@ -148,15 +160,8 @@ export default function PrimarySearchAppBar() {
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
         <Toolbar>
-          <IconButton
-            size="large"
-            edge="start"
-            color="inherit"
-            aria-label="open drawer"
-            sx={{ mr: 2 }}
-          >
-            <MenuIcon />
-          </IconButton>
+          <SwipeableTemporaryDrawer />
+
           <Typography
             variant="h6"
             noWrap

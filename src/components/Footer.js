@@ -9,6 +9,7 @@ import LoopIcon from "@mui/icons-material/Loop";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import PlaylistAddIcon from "@mui/icons-material/PlaylistAdd";
 import SliderItem from "./Slider";
+import SwipeableTemporaryDrawer from "./Drawer";
 
 export default function Footer() {
   return (
@@ -91,7 +92,7 @@ const FooterRight = () => {
       children={[
         <FavoriteBorderIcon className="hoverspotify" />,
         <SliderItem className="color-spotify" />,
-        <PlaylistAddIcon className='hoverspotify'/>,
+        <PlaylistAddIcon className="hoverspotify" />,
       ]}
     />
   );

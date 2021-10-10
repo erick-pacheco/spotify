@@ -1,4 +1,5 @@
 const initialState = {
+  sideMenuOpen: null,
   user: null,
   token: null,
   playlist: [],

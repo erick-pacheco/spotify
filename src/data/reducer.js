@@ -1,6 +1,7 @@
 import {
   AUTH_SET_TOKEN,
   AUTH_SET_USER,
+  SIDE_MENU_TOGGLE,
   SPOTIFY_SET_PLAYLIST,
 } from "./action.types";
 
@@ -22,6 +23,11 @@ const reducer = (state, action) => {
       return {
         ...state,
         playlist: payload,
+      };
+    case SIDE_MENU_TOGGLE:
+      return {
+        ...state,
+        sideMenuOpen: payload,
       };
     default:
       return state;

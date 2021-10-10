@@ -1,11 +1,14 @@
-import React from 'react'
-import PrimarySearchAppBar from './Header'
-import XSpread from './XSpread'
+import React from "react";
+import { useStateValue } from "../data/StateProvider";
+import PrimarySearchAppBar from "./Header";
+import { Hero } from "./Hero";
 
 export default function Body() {
-    return (
-        <div className='body'>
-           <PrimarySearchAppBar className='bg bg-dark'/>
-        </div>
-    )
+  const [{ sideMenuOpen }] = useStateValue();
+  return (
+    <div className={`body w-100`}>
+      <PrimarySearchAppBar className="bg bg-dark" />
+      <Hero />
+    </div>
+  );
 }

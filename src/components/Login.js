@@ -1,14 +1,16 @@
 import React from "react";
 import { loginUrl } from "../configs/spotify";
 import { useStateValue } from "../data/StateProvider";
+import PlayCircleOutlineIcon from "@mui/icons-material/PlayCircleOutline";
+import XSpread from "./XSpread";
 
 export default function Login({ theme }) {
   const [{ spotify_img }] = useStateValue();
   return (
     <div
-      className={`h-100 ${theme === "dark" ? "text-white" : "text-dark"} ${
-        "bg bg-" + theme
-      }`}
+      className={`login h-100 ${
+        theme === "dark" ? "text-white" : "text-dark"
+      } ${"bg bg-" + theme}`}
     >
       <div className="d-flex align-items-center justify-content-center h-100">
         <div className="d-flex flex-column">
@@ -18,17 +20,18 @@ export default function Login({ theme }) {
                 <td className="align-middle">
                   <img
                     src={spotify_img}
-                    className="img-fluid mb-5"
+                    className="animate__animated animate__backInDown  img-fluid mb-5"
                     alt="Spotify Logo"
                     style={{ maxWidth: "40vh" }}
                   />
-                  <div className="d-grid gap-2 mt-5">
+
+                  <div className="d-grid gap-2 mt-5 animate__animated animate__backInUp">
                     <a
-                      className="btn btn-spotify"
+                      className="btn btn-spotify shadow-lg shadow-spotify"
                       type="button"
                       href={loginUrl}
                     >
-                      Login With Spotify
+                      Login With Spotify <PlayCircleOutlineIcon />
                     </a>
                   </div>
                 </td>
