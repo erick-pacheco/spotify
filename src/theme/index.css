@@ -1,0 +1,117 @@
+* {
+  margin: 0;
+}
+.color-spotify {
+  color: #1db954 !important;
+}
+
+/* Overide the progress bar of the notifications */
+:root {
+  --toastify-color-progress-dark: #1db954 !important;
+}
+
+/*
+mui class for nav
+*/
+
+.css-1k0i2s9-MuiPaper-root-MuiAppBar-root {
+  background-color: red;
+}
+.bg-dark {
+  background-color: black !important;
+}
+.bg-spotify {
+  background-color: #1db954 !important;
+}
+.btn-spotify {
+  border-radius: 99px !important;
+  background-color: #1db954 !important;
+  font-weight: 800;
+  color: white;
+}
+
+/*
+Player Start
+*/
+
+.player_body {
+  display: flex;
+}
+
+/*
+Player End
+*/
+
+/*
+Sidebar Start
+*/
+
+.sidebar_flex {
+  flex: 0.2;
+}
+.sidebar {
+  height: 100vh;
+
+  background-color: #040404;
+  color: grey;
+  padding-left: 10px;
+  padding-top: 10px;
+  padding-right: 10px;
+  min-width: 230px;
+}
+
+.sidebarOption {
+  height: 30px;
+  cursor: pointer;
+  transition: 200ms color ease-in;
+}
+.sidebarOption:hover {
+  color: white;
+}
+
+.sidebar_logo {
+  object-fit: contain;
+  height: 50px;
+}
+
+/*
+Body Start
+*/
+.body {
+  flex: 0.8;
+  height: 100vh;
+  padding: 30px;
+  color: white;
+  background: linear-gradient(rgb(91, 87, 115), rgba(0, 0, 0, 1));
+}
+
+/*
+Footer
+*/
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  height: auto;
+  width: 100%;
+  color: white;
+  background-color: #282828 !important;
+}
+
+.hoverover {
+  color: gray !important;
+}
+.hoverspotify:hover {
+  color: #1db954 !important;
+}
+
+.hoverover:hover {
+  color: white !important;
+  cursor: pointer !important;
+  transition: 200ms color ease-in !important;
+}
+
+.small-img {
+  object-fit: contain;
+  max-width: 50px;
+}

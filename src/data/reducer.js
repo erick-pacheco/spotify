@@ -1,16 +1,27 @@
-import { AUTH_SET_TOKEN, AUTH_SET_USER } from "./action.types";
+import {
+  AUTH_SET_TOKEN,
+  AUTH_SET_USER,
+  SPOTIFY_SET_PLAYLIST,
+} from "./action.types";
 
 const reducer = (state, action) => {
-  switch (action.type) {
+  const { type, payload } = action;
+
+  switch (type) {
     case AUTH_SET_USER:
       return {
         ...state,
-        user: action.payload,
+        user: payload,
       };
     case AUTH_SET_TOKEN:
       return {
         ...state,
-        token: action.payload,
+        token: payload,
+      };
+    case SPOTIFY_SET_PLAYLIST:
+      return {
+        ...state,
+        playlist: payload,
       };
     default:
       return state;

@@ -3,7 +3,7 @@ import { loginUrl } from "../configs/spotify";
 import { useStateValue } from "../data/StateProvider";
 
 export default function Login({ theme }) {
-  const [{spotify_img}] = useStateValue()
+  const [{ spotify_img }] = useStateValue();
   return (
     <div
       className={`h-100 ${theme === "dark" ? "text-white" : "text-dark"} ${
