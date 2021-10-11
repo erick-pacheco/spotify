@@ -7,7 +7,7 @@ import SpotifyWebApi from "spotify-web-api-js";
 
 const spotify = new SpotifyWebApi();
 const authEndPoint = "https://accounts.spotify.com/authorize";
-const redirectUri = "http://localhost:3000/";
+const redirectUri = "https://spotify-re.web.app/";
 const clientId = "995efab9ad6f4d23b012e50fdb4ba513";
 const scopes = [
   "user-read-currently-playing",
