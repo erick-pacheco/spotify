@@ -7,7 +7,7 @@ import LibraryMusicIcon from "@mui/icons-material/LibraryMusic";
 import SearchIcon from "@mui/icons-material/Search";
 
 const SideBar = () => {
-  const [{ spotify_img, sideMenuOpen }] = useStateValue();
+  const [{ spotify_img }] = useStateValue();
 
   return (
     <div className={`sidebar`}>
